@@ -1,19 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { MatTableDataSource } from '@angular/material';
-
 import { Issue } from '../../../models/issue.model';
 import { IssueService } from '../../../service/issue.service';
 
 @Component({
-  selector: 'app-list',
-  templateUrl: './list.component.html',
-  styleUrls: ['./list.component.css']
+  selector: 'app-begin',
+  templateUrl: './begin.component.html',
+  styleUrls: ['./begin.component.css']
 })
-export class ListComponent implements OnInit {
+export class BeginComponent implements OnInit {
 
   issues: Issue[];
-  displayedColumns = ['oId','iId','cId', 'dueDate', 'qntity', 'stat', 'actions'];
+  displayedColumns = ['oId','iId', 'dueDate', 'qntity', 'stat', 'actions'];
 
   constructor(private issueService: IssueService, private router: Router) { }
 
@@ -32,14 +31,13 @@ export class ListComponent implements OnInit {
       });
   }
 
-  editIssue(id) {
-    this.router.navigate([`/edit/${id}`]);
+  manualProduct(id) {
+    this.router.navigate([`/manual/${id}`]);
   }
 
-  deleteIssue(id) {
-    this.issueService.deleteIssue(id).subscribe(() => {
-      this.fetchIssues();
-    });
+  
+  autoProduct(id) {
+    this.router.navigate([`/manual/${id}`]);
   }
  
 }

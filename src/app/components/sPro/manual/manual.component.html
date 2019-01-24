@@ -2,7 +2,7 @@
   <br>
   <mat-card>
     <section class="mat-typography">
-      <h3>Update Issue</h3>
+      <h3>Intialize Daily Production</h3>
     </section>
     <mat-divider></mat-divider>
     <br>
@@ -19,25 +19,13 @@
               </mat-form-field>
 
               <mat-form-field class="field-full-width">
-                <input type="date" matInput placeholder="Order Due On" formControlName="dueDate" #orderDue>
-              </mat-form-field>
-
-              <mat-form-field class="field-full-width">
-                <input matInput placeholder="Order Quntity" formControlName="qntity" #qntity>
-              </mat-form-field>
-
-              <mat-form-field>
-                  <mat-select placeholder="Order_Status" formControlName="stat" #stat>
-                    <mat-option value="Order_Due">Order Due</mat-option>
-                    <mat-option value="Order_Processing">Order Processing</mat-option>
-                    <mat-option value="Order_Completed">Order Completed</mat-option>
-                  </mat-select>
+                <input matInput placeholder="Accepted No Product per Hour" formControlName="aRate" #aRate>
               </mat-form-field>
               
           <mat-divider></mat-divider>
           <br><br>
           <button mat-raised-button color="accent" routerLink="/list">Back</button>&nbsp;
-          <button type="submit" (click)="updateIssue(oId.value, iId.value, cId.value, orderDue.value, qntity.value, stat.value)" [disabled]="updateForm.pristine || updateForm.invalid" mat-raised-button color="primary">Save</button>
+          <button type="submit" (click)="startPro(oId.value, iId.value, cId.value, aRate.value)" [disabled]="updateForm.pristine || updateForm.invalid" mat-raised-button color="primary">Save</button>
         </form>
   </mat-card>
 </div>

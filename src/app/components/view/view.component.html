@@ -1,9 +1,38 @@
-<body>
-
-    <div class="bg">
-
-   
-
-</div>
-        
-</body>
+<div>
+    <br>
+    <mat-card>
+            <section class="mat-typography">
+                    <h3>Triggerd Alerts</h3>
+            </section> 
+      <br><br>
+      <mat-divider></mat-divider>
+      <br>
+      <table mat-table [dataSource]="alerts">
+        <ng-container matColumnDef="oid">
+          <th mat-header-cell *matHeaderCellDef>Order Id</th>
+          <td mat-cell *matCellDef="let element"> {{element.oid}} </td>
+        </ng-container>
+        <ng-container matColumnDef="iId">
+            <th mat-header-cell *matHeaderCellDef>Item Code</th>
+            <td mat-cell *matCellDef="let element"> {{element.iId}} </td>
+          </ng-container>
+          <ng-container matColumnDef="cId">
+              <th mat-header-cell *matHeaderCellDef>Customer Reference No</th>
+              <td mat-cell *matCellDef="let element"> {{element.cId}} </td>
+            </ng-container>
+        <ng-container matColumnDef="variance">
+          <th mat-header-cell *matHeaderCellDef>Variance</th>
+          <td mat-cell *matCellDef="let element"> {{element.variance}} </td>
+        </ng-container>
+  
+        <ng-container matColumnDef="timeStamp">
+          <th mat-header-cell *matHeaderCellDef>Time  of The Alert</th>
+          <td mat-cell *matCellDef="let element"> {{element.timeStamp}} </td>
+        </ng-container>
+  
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  
+      </table>
+    </mat-card>
+  </div>

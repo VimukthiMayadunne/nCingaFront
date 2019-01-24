@@ -7,12 +7,18 @@
       <mat-divider></mat-divider>
       <br>
       <form [formGroup]="createForm" class="create-form">
-        <mat-form-field class="field-full-width">
-          <input matInput placeholder="Item Name" formControlName="itemname" #itemname>
-          <!--<mat-error *ngIf="createForm.controls['title'].errors.required">
-            Title is <strong>required</strong>
-          </mat-error>-->
-        </mat-form-field>
+          <mat-form-field class="field-full-width">
+              <input matInput placeholder="Order N0:" formControlName="oId" #oId>
+          </mat-form-field>
+
+          <mat-form-field class="field-full-width">
+              <input matInput placeholder="Product Code" formControlName="iId" #iId>
+          </mat-form-field>
+
+          <mat-form-field class="field-full-width">
+                <input matInput placeholder="Customer Reference No" formControlName="cId" #cId>
+          </mat-form-field>
+          
         <mat-form-field class="field-full-width">
           <input type="date" matInput placeholder="Order Due On" formControlName="dueDate" #orderDue>
         </mat-form-field>
@@ -29,7 +35,7 @@
         <mat-divider></mat-divider>
         <br><br>
         <button mat-raised-button color="accent" routerLink="/list">Back</button>&nbsp;
-        <button type="submit" (click)="addIssue(itemname.value, orderDue.value, qntity.value, stat.value)" [disabled]="createForm.pristine || createForm.invalid" mat-raised-button color="primary">Save</button>
+        <button type="submit" (click)="addIssue(oId.value, iId.value, cId.value, orderDue.value, qntity.value, stat.value)" [disabled]="createForm.pristine || createForm.invalid" mat-raised-button color="primary">Save</button>
       </form>
     </mat-card>
   </div>

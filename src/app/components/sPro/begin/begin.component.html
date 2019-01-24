@@ -1,0 +1,48 @@
+<div>
+  <br>
+  <mat-card>
+    <section class="mat-typography">
+      <h3>Initialization Of Daily Production</h3>
+    </section>
+    <mat-divider></mat-divider>
+    <br>
+    <table mat-table [dataSource]="issues">
+        <ng-container matColumnDef="oId">
+            <th mat-header-cell *matHeaderCellDef>Order Id</th>
+            <td mat-cell *matCellDef="let element"> {{element.oId}} </td>
+          </ng-container>
+          <ng-container matColumnDef="iId">
+              <th mat-header-cell *matHeaderCellDef>Item Code</th>
+              <td mat-cell *matCellDef="let element"> {{element.iId}} </td>
+          </ng-container>
+
+      <ng-container matColumnDef="dueDate">
+        <th mat-header-cell *matHeaderCellDef>Order Due ON</th>
+        <td mat-cell *matCellDef="let element"> {{element.dueDate}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="qntity">
+        <th mat-header-cell *matHeaderCellDef>Order Quntity</th>
+        <td mat-cell *matCellDef="let element"> {{element.qntity}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="stat">
+        <th mat-header-cell *matHeaderCellDef>Status</th>
+        <td mat-cell *matCellDef="let element"> {{element.stat}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef class="mat-column-right">Actions</th>
+        <td mat-cell *matCellDef="let element" class="mat-column-right">
+          <button mat-raised-button color="primary" (click)="manualProduct(element._id)">Maual Intilization</button>
+          <button mat-raised-button color="primary" (click)="autoProduct(element._id)">Automatic Initilization</button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+    </table>
+  </mat-card>
+</div>
+

@@ -1,7 +1,9 @@
 export interface Issue{
     id:String;
-    itemname:String;
-    dueDate:String;
+    oId:String;
+    iId:String;
+    cId:String;
+    dueDate:Date;
     qntity:Number;
     stat:String;
 }

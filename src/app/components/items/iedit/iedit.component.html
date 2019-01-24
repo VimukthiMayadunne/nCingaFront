@@ -1,3 +1,31 @@
-<p>
-  iedit works!
-</p>
+<div>
+  <br>
+  <mat-card>
+    <section class="mat-typography">
+      <h3>Add A New Item</h3>
+    </section>
+    <mat-divider></mat-divider>
+    <br>
+    <form [formGroup]="createForm" class="create-form">
+      <mat-form-field class="field-full-width">
+        <input matInput placeholder="Item ID" formControlName="iId" #iId>
+        <!--<mat-error *ngIf="createForm.controls['title'].errors.required">
+          Title is <strong>required</strong>
+        </mat-error>-->
+      </mat-form-field>
+      <mat-form-field class="field-full-width">
+      <input matInput placeholder="Item Name" formControlName="iName" #iName>
+      </mat-form-field>
+      <mat-form-field class="field-full-width">
+        <input matInput placeholder="Standard Labhour Hours" formControlName="sLHours" #sLHours>
+        </mat-form-field>
+        <mat-form-field class="field-full-width">
+            <input matInput placeholder="Standard Machine Hours" formControlName="sMHours" #sMhours>
+        </mat-form-field>
+      <mat-divider></mat-divider>
+      <br><br>
+      <button mat-raised-button color="accent" routerLink="/clist">Back</button>&nbsp;
+      <button type="submit" (click)="updateI(iId.value, iName.value, sLHours.value , sMHours.value)" [disabled]="createForm.pristine || createForm.invalid" mat-raised-button color="primary">Save</button>
+    </form>
+  </mat-card>
+</div>

@@ -13,9 +13,15 @@ import { CreateComponent } from './components/product/create/create.component';
 import { EditComponent } from './components/product/edit/edit.component';
 
 import { IssueService } from './service/issue.service';
+import { ItemsService } from './service/items.service';
+import { CustomersService } from './service/customers.service';
+import { EmployeeService } from './service/employee.service';
+
+
+
 import { ViewComponent } from './components/view/view.component';
 import { PastComponent } from './components/past/past.component';
-import { BeginComponent } from './components/begin/begin.component';
+import { BeginComponent } from './components/sPro/begin/begin.component';
 import { ProdPlanComponent } from './components/prod-plan/prod-plan.component';
 import { ClistComponent } from './components/customers/clist/clist.component';
 import { CcreateComponent } from './components/customers/ccreate/ccreate.component';
@@ -26,8 +32,13 @@ import { EeditComponent } from './components/employee/eedit/eedit.component';
 import { IeditComponent } from './components/items/iedit/iedit.component';
 import { IlistComponent } from './components/items/ilist/ilist.component';
 import { IcreateComponent } from './components/items/icreate/icreate.component';
+import { ManualComponent } from './components/sPro/manual/manual.component';
+import { AutoComponent } from './components/sPro/auto/auto.component';
 
 const routes: Routes = [
+  { path: 'auto/:id', component: AutoComponent},
+  { path: 'manual/:id', component: ManualComponent},
+
   { path: 'view', component: ViewComponent},
   { path: 'past', component: PastComponent},
   { path: 'plan', component: ProdPlanComponent },
@@ -39,6 +50,7 @@ const routes: Routes = [
 
   { path: 'ecreate', component: EcreateComponent},
   { path: 'eedit/:id', component: EeditComponent},
+  { path: 'eedit', component: EeditComponent},
   { path: 'elist', component: ElistComponent},
   
   { path: 'ccreate', component: CcreateComponent},
@@ -70,7 +82,9 @@ const routes: Routes = [
     EeditComponent,
     IeditComponent,
     IlistComponent,
-    IcreateComponent
+    IcreateComponent,
+    ManualComponent,
+    AutoComponent
   ],
   imports: [
     BrowserModule,
@@ -90,7 +104,7 @@ const routes: Routes = [
     MatDividerModule,
     MatSnackBarModule
   ],
-  providers: [IssueService],
+  providers: [IssueService,ItemsService,CustomersService,EmployeeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

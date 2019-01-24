@@ -1,3 +1,44 @@
-<p>
-  ecreate works!
-</p>
+<div>
+  <br>
+  <mat-card>
+    <section class="mat-typography">
+      <h3>Add A New Employee</h3>
+    </section>
+    <mat-divider></mat-divider>
+    <br>
+    <form [formGroup]="createForm" class="create-form">
+      <mat-form-field class="field-full-width">
+        <input matInput placeholder="Employee ID" formControlName="empId" #empId>
+        <!--<mat-error *ngIf="createForm.controls['title'].errors.required">
+          Title is <strong>required</strong>
+        </mat-error>-->
+      </mat-form-field>
+      <mat-form-field class="field-full-width">
+      <input matInput placeholder="First Name" formControlName="eFirstName" #eFirstName>
+      </mat-form-field>
+      <mat-form-field class="field-full-width">
+        <input matInput placeholder="Last Name" formControlName="eLastName" #eLastName>
+        </mat-form-field>
+      <mat-form-field>
+          <mat-select placeholder="Designation Of The Employee" formControlName="eType" #eType>
+            <mat-option value="Manager">Manager</mat-option>
+            <mat-option value="Supervisor">Supervisor</mat-option>
+            <mat-option value="Administrator">Administrator</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field class="field-full-width">
+            <input matInput type="password" placeholder="Default Password" formControlName="password" #password>
+          </mat-form-field>
+        <mat-form-field class="field-full-width">
+            <input matInput type="email" placeholder="E-mail" formControlName="eEmail" #eEmail>
+        </mat-form-field>
+        <mat-form-field class="field-full-width">
+          <input matInput placeholder="Contact No" formControlName="contactNo" #contactNo>
+      </mat-form-field>
+      <mat-divider></mat-divider>
+      <br><br>
+      <button mat-raised-button color="accent" routerLink="/list">Back</button>&nbsp;
+      <button type="submit" (click)="addE(empId.value, eFirstName.value, eLastName.value, eType.value , password.value , eEmail.value , contactNo.value)" [disabled]="createForm.pristine || createForm.invalid" mat-raised-button color="primary">Save</button>
+    </form>
+  </mat-card>
+</div>

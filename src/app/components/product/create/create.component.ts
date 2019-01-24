@@ -15,15 +15,18 @@ export class CreateComponent implements OnInit {
 
   constructor(private issueService: IssueService, private fb: FormBuilder, private router: Router) {
     this.createForm = this.fb.group({
-      itemname: ['', Validators.required],
+      
+      oId: ['', Validators.required],
+      iId: ['', Validators.required],
+      cId: ['', Validators.required],
       dueDate: ['',Validators.required],
       qntity: ['',Validators.min(1)],
       stat: ['',Validators.required]
     });
   }
 
-  addIssue(itemname, dueDate, qntity, stat) {
-    this.issueService.addIssue(itemname, dueDate, qntity, stat).subscribe(() => {
+  addIssue(oId,iId,cId, dueDate, qntity, stat) {
+    this.issueService.addIssue(oId,iId,cId,  dueDate, qntity, stat).subscribe(() => {
       this.router.navigate(['/list']);
     });
   }

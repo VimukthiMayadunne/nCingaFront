@@ -14,39 +14,47 @@ export class IssueService {
     return this.http.get(`${this.uri}/get`);
   }
 
+  getalerts() {
+    return this.http.get(`http://localhost:4000/itemc/getal`);
+  }
+
   getIssueById(id) {
     return this.http.get(`${this.uri}/get/${id}`);
   }
 
-  addIssue(item, date, qty, stat) {
+  addIssue(oId,iId,cId,date,qty,stat) {
     const issue = {
-      itemname: item,
+      oId:oId,
+      iId: iId,
+      cId:cId,
       dueDate: date,
       qntity: qty,
       stat: stat
     };
     return this.http.post(`${this.uri}/add`, issue);
   }
-
-  addOredr(oid,qty) {
-    const order = {
-      odi: oid,
-      qntity: qty
-    };
-    return this.http.post(`${this.uri}/add`, order);
-  }
-
-  updateIssue(id,item, date, qty, stat) {
+  updateIssue(id,oId,iId,cId,date, qty, stat) {
     const issue = {
-      itemname: item,
+      oId:oId,
+      iId: iId,
+      cId:cId,
       dueDate: date,
       qntity: qty,
       stat: stat
     };
-    return this.http.put(`${this.uri}/update/${id}`, issue);
+    return this.http.post(`${this.uri}/update/${id}`, issue);
   }
 
   deleteIssue(id) {
     return this.http.get(`${this.uri}/delete/${id}`);
   }
-}
+  startPro(id,oId,iId,cId,aRate) {
+    const issue = {
+      oId:oId,
+      iId: iId,
+      cId:cId,
+      aRate:aRate
+    };
+    return this.http.post(`http://localhost:4000/manual/add`, issue);
+    }
+  }
