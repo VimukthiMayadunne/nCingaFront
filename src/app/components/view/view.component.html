@@ -1,3 +1,4 @@
+<app-navbar></app-navbar>
 <div>
     <br>
     <mat-card>
@@ -16,10 +17,6 @@
             <th mat-header-cell *matHeaderCellDef>Item Code</th>
             <td mat-cell *matCellDef="let element"> {{element.iId}} </td>
           </ng-container>
-          <ng-container matColumnDef="cId">
-              <th mat-header-cell *matHeaderCellDef>Customer Reference No</th>
-              <td mat-cell *matCellDef="let element"> {{element.cId}} </td>
-            </ng-container>
         <ng-container matColumnDef="variance">
           <th mat-header-cell *matHeaderCellDef>Variance</th>
           <td mat-cell *matCellDef="let element"> {{element.variance}} </td>

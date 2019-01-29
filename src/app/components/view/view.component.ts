@@ -13,7 +13,7 @@ import { IssueService } from '../../service/issue.service';
 export class ViewComponent implements OnInit {
 
   alerts: Alerts[];
-  displayedColumns = ['oid','iId','cId', 'variance', 'timeStamp'];
+  displayedColumns = ['oid','iId', 'variance', 'timeStamp'];
 
   constructor(private issueService: IssueService, private router: Router) { }
 

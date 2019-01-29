@@ -1,0 +1,10 @@
+
+
+
+  <ul>
+    <li style ="float:left" *ngIf="UserService.isLoggedIn()"><a routerLink ="/begin">nCinga Innovation</a></li>
+    <li *ngIf="UserService.isLoggedIn()"><a routerLink ="/begin">Profile</a></li>
+    <li *ngIf="!UserService.isLoggedIn()"><a routerLink ="/login">Login</a></li>
+    <li *ngIf="UserService.isLoggedIn()"><a (click) = "onLogoutclick()">Logout</a></li>
+ </ul>
+

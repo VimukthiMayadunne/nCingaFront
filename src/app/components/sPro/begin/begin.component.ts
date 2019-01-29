@@ -10,26 +10,31 @@ import { IssueService } from '../../../service/issue.service';
   styleUrls: ['./begin.component.css']
 })
 export class BeginComponent implements OnInit {
-
+  stat: any;
   issues: Issue[];
   displayedColumns = ['oId','iId', 'dueDate', 'qntity', 'stat', 'actions'];
 
   constructor(private issueService: IssueService, private router: Router) { }
 
   ngOnInit() {
-    this.fetchIssues();
+    this.getstat();
+    if(this.stat == true)
+      this.router.navigate(['/list']);
+    else
+      this.fetchIssues();
   }
 
   fetchIssues() {
     console.log("function called");
     this.issueService
-      .getIssues()
+      .getdueIssues()
       .subscribe((data: Issue[]) => {
         this.issues = data;
         console.log('Data requested ...');
         console.log(this.issues);
       });
   }
+
 
   manualProduct(id) {
     this.router.navigate([`/manual/${id}`]);
@@ -38,6 +43,12 @@ export class BeginComponent implements OnInit {
   
   autoProduct(id) {
     this.router.navigate([`/manual/${id}`]);
+  }
+  getstat(){
+    this.issueService.getstat().subscribe(res =>{
+      this.stat=res;
+        return this.stat;
+    });
   }
  
 }

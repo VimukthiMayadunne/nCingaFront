@@ -1,0 +1,39 @@
+<mat-toolbar>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item active">
+              <button mat-raised-button color="primary" routerLink="/begin">Intialize Daily Production</button>
+          </li>
+          <li class="nav-item">
+              <button mat-raised-button color="primary" routerLink="/view">View The Alerts Genarated</button>
+          </li>
+          <li class="nav-item">
+              <button mat-raised-button color="primary" routerLink="/plan">View and Search The Reports</button>
+          </li>
+          <li class="nav-item">
+              <button mat-raised-button color="primary" routerLink="/elist">View Add & Edit Employees</button>
+          </li>
+          <li class="nav-item">
+              <button mat-raised-button color="primary" routerLink="/clist">View Add & Edit Customers</button>
+          </li>
+          <li class="nav-item">
+              <button mat-raised-button color="primary" routerLink="/list">View Add & Edit Orders</button>
+          </li>
+          <li class="nav-item">
+              <button mat-raised-button color="primary" routerLink="/ilist">View Add & Edit Items</button>
+          </li>
+          <li class="nav-item">
+              <button mat-raised-button color="primary" routerLink="/plan">View and Search The Reports</button>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+</mat-toolbar>
+<div>
+<router-outlet></router-outlet>
+</div>

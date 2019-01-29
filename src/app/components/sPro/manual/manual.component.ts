@@ -18,6 +18,7 @@ export class ManualComponent implements OnInit {
   issue: any = {};
   updateForm: FormGroup;
 
+
   // tslint:disable-next-line:max-line-length
   constructor(private issueService: IssueService, private router: Router, private route: ActivatedRoute, private snackBar: MatSnackBar, private fb: FormBuilder) {
     this.createForm();
@@ -28,7 +29,9 @@ export class ManualComponent implements OnInit {
       oId: ['', Validators.required],
       iId: ['', Validators.required],
       cId: ['', Validators.required],
+      dId: ['',Validators.required],
       aRate: ['',Validators.required]
+
     });
   }
 
@@ -44,13 +47,17 @@ export class ManualComponent implements OnInit {
     });
   }
 
-  startPro(oId, iId, cId , aRate ) {
-    this.issueService.startPro(this.id,oId,iId,cId,aRate).subscribe(() => {
+
+  startPro(oId, iId, cId ,dId, aRate ) {
+    this.issueService.startPro(oId,iId,cId,dId,aRate).subscribe(() => {
       this.snackBar.open('Issue updated successfully', 'OK', {
         duration: 5000
       });
+      console.log(oId, iId, cId ,dId, aRate);
       this.router.navigate(['/list']);
     });
   }
+
+  
 
 }

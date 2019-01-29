@@ -1,8 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule,HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
+import {FormsModule} from '@angular/forms'
 
 import { MatToolbarModule, MatFormFieldModule, MatInputModule, MatOptionModule, MatSelectModule, MatIconModule, MatButtonModule, MatCardModule, MatTableModule, MatDividerModule, MatSnackBarModule } from '@angular/material';
 
@@ -16,6 +17,12 @@ import { IssueService } from './service/issue.service';
 import { ItemsService } from './service/items.service';
 import { CustomersService } from './service/customers.service';
 import { EmployeeService } from './service/employee.service';
+import { UserService } from './service/user.service';
+
+
+import { AuthGuard } from './auth/auth.guard';
+import { ManGuard } from './auth/man.guard';
+import { AuthInterceptor } from './auth/auth.interceptor';
 
 
 
@@ -34,34 +41,42 @@ import { IlistComponent } from './components/items/ilist/ilist.component';
 import { IcreateComponent } from './components/items/icreate/icreate.component';
 import { ManualComponent } from './components/sPro/manual/manual.component';
 import { AutoComponent } from './components/sPro/auto/auto.component';
+import { StopComponent } from './components/sPro/stop/stop.component';
+
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { LoginComponent } from './login/login.component';
+import { NewNawComponent } from './new-naw/new-naw.component';
 
 const routes: Routes = [
-  { path: 'auto/:id', component: AutoComponent},
-  { path: 'manual/:id', component: ManualComponent},
+  { path: 'auto/:id', component: AutoComponent,canActivate:[AuthGuard]  },
+  { path: 'manual/:id', component: ManualComponent,canActivate:[AuthGuard]   },
+  { path: 'stop', component: StopComponent,canActivate:[AuthGuard]   },
 
-  { path: 'view', component: ViewComponent},
-  { path: 'past', component: PastComponent},
-  { path: 'plan', component: ProdPlanComponent },
-  { path: 'begin', component: BeginComponent},
+  { path: 'view', component: ViewComponent,canActivate:[AuthGuard]   },
+  { path: 'past', component: PastComponent ,canActivate:[AuthGuard] },
+  { path: 'plan', component: ProdPlanComponent ,canActivate:[ManGuard] },
+  { path: 'begin', component: BeginComponent,canActivate:[AuthGuard]   },
 
-  { path: 'edit/:id', component: EditComponent},
-  { path: 'list', component: ListComponent},
-  { path: 'create', component: CreateComponent},
+  { path: 'edit/:id', component: EditComponent ,canActivate:[ManGuard]},
+  { path: 'list', component: ListComponent ,canActivate:[AuthGuard] },
+  { path: 'create', component: CreateComponent ,canActivate:[AuthGuard]},
 
-  { path: 'ecreate', component: EcreateComponent},
-  { path: 'eedit/:id', component: EeditComponent},
-  { path: 'eedit', component: EeditComponent},
-  { path: 'elist', component: ElistComponent},
+  { path: 'ecreate', component: EcreateComponent ,canActivate:[ManGuard] },
+  { path: 'eedit/:id', component: EeditComponent ,canActivate:[ManGuard] },
+  { path: 'eedit', component: EeditComponent,canActivate:[ManGuard]   },
+  { path: 'elist', component: ElistComponent ,canActivate:[ManGuard] },
   
-  { path: 'ccreate', component: CcreateComponent},
-  { path: 'cedit/:id', component: CeditComponent},
-  { path: 'clist', component: ClistComponent},
+  { path: 'ccreate', component: CcreateComponent ,canActivate:[ManGuard] },
+  { path: 'cedit/:id', component: CeditComponent,canActivate:[ManGuard]  },
+  { path: 'clist', component: ClistComponent ,canActivate:[ManGuard] },
   
-  { path: 'icreate', component: IcreateComponent},
-  { path: 'iedit/:id', component: IeditComponent},
-  { path: 'ilist', component: IlistComponent},
+  { path: 'icreate', component: IcreateComponent,canActivate:[ManGuard]  },
+  { path: 'iedit/:id', component: IeditComponent ,canActivate:[ManGuard]},
+  { path: 'ilist', component: IlistComponent,canActivate:[ManGuard] },
 
-  { path: '', redirectTo: 'view', pathMatch: 'full'}
+
+  { path: 'login', component: LoginComponent  },
+  { path: '', redirectTo: 'login', pathMatch: 'full'}
 ];
 
 @NgModule({
@@ -84,10 +99,15 @@ const routes: Routes = [
     IlistComponent,
     IcreateComponent,
     ManualComponent,
-    AutoComponent
+    AutoComponent,
+    StopComponent,
+    NavbarComponent,
+    LoginComponent,
+    NewNawComponent
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     BrowserAnimationsModule,
     HttpClientModule,
     RouterModule.forRoot(routes),
@@ -104,7 +124,11 @@ const routes: Routes = [
     MatDividerModule,
     MatSnackBarModule
   ],
-  providers: [IssueService,ItemsService,CustomersService,EmployeeService],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: AuthInterceptor,
+    multi: true
+  },AuthGuard,ManGuard, UserService,IssueService,ItemsService,CustomersService,EmployeeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

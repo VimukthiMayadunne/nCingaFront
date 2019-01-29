@@ -14,12 +14,22 @@ export class IssueService {
     return this.http.get(`${this.uri}/get`);
   }
 
+  getdueIssues() {
+    return this.http.get(`${this.uri}/getdue`);
+  }
+
+  stopPro() {
+    return this.http.get(``);
+  }
   getalerts() {
     return this.http.get(`http://localhost:4000/itemc/getal`);
   }
 
   getIssueById(id) {
     return this.http.get(`${this.uri}/get/${id}`);
+  }
+  getstat(){
+    return this.http.get(`http://localhost:4000/manual/getstat`);
   }
 
   addIssue(oId,iId,cId,date,qty,stat) {
@@ -48,11 +58,12 @@ export class IssueService {
   deleteIssue(id) {
     return this.http.get(`${this.uri}/delete/${id}`);
   }
-  startPro(id,oId,iId,cId,aRate) {
+  startPro(oId,iId,cId,dId,aRate) {
     const issue = {
       oId:oId,
       iId: iId,
       cId:cId,
+      dId:dId,
       aRate:aRate
     };
     return this.http.post(`http://localhost:4000/manual/add`, issue);

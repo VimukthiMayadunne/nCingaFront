@@ -6,10 +6,12 @@ import { HttpClient } from '@angular/common/http';
 })
 export class EmployeeService {
 
+  authToken: any;
+  user: any
   uri = 'http://localhost:4000/emp';
 
   constructor(private http: HttpClient) { }
-
+  
   getE() {
     return this.http.get(`${this.uri}/get`);
   }

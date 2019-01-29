@@ -1,0 +1,5 @@
+<div>
+  <h1>Production Has Started</h1>
+  <h2>Click The Stop Button to stop the Production</h2>
+  <button type="submit" (click)="endPro()" [disabled]="updateForm.pristine || updateForm.invalid" mat-raised-button color="primary">Stop</button>
+</div>
