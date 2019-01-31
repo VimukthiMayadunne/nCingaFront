@@ -1,9 +1,47 @@
-<body>
-
-  <div class="bg">
-
- 
-
-</div>
-      
-</body>
+<br><br>
+<table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Item</th>
+        <th scope="col">Data</th>
+        <th scope="col">Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">1</th>
+        <td>Item Code</td>
+        <td>{{data.iId}}</td>
+      </tr>
+      <tr>
+        <th scope="row">2</th>
+        <td>Production Start Date</td>
+        <td>{{data.sDate}}</td>
+      </tr>
+      <tr>
+        <th scope="row">3</th>
+        <td>Production Finishing Date</td>
+        <td>{{data.fDate}}</td>
+      </tr>
+      <tr>
+        <th scope="row">4</th>
+        <th>Required Rate </th>
+        <td>{{data.rRate}}</td>
+        <td><p>To Complete the recived Orders Organization Sould Mainain the given rate of production per hour</td>
+      </tr>
+      <tr>
+        <th scope="row">5</th>
+        <th>Standard Rate</th>
+        <td>{{data.sRate}}</td>
+        <td>Wtdth the avilable resources for the organization hourly porduction should be aline with the given figures</td>
+      </tr>
+      <tr>
+          <th scope="row">6</th>
+          <th>Bottelneck Factor</th>
+          <td>{{data.bNeck}}</td>
+          <td>This is The factor which Limits the Production.Managment should consider about the ways to improve the  capacityof  limiting factor </td>
+        </tr>
+    </tbody>
+  </table>
+  

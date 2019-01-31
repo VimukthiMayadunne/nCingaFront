@@ -1,0 +1,54 @@
+<mat-card>
+  <section class="mat-typography">
+    <h3>Select A date To view The</h3>
+  </section>
+  <mat-divider></mat-divider>
+  <br>
+  <form [formGroup]="createForm" class="create-form">
+    <mat-form-field class="field-full-width">
+      <input matInput type="date" placeholder="Please Select A Date to Viefw FeedBack" formControlName="date" #date>
+    </mat-form-field>
+    <button type="submit" (click)="fetchC(date.value)" [disabled]="createForm.pristine || createForm.invalid" mat-raised-button color="primary">Get FeedBack</button>
+  </form>
+</mat-card>
+<!--
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Item</th>
+      <th scope="col">Data</th>
+     
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>Item Code</td>
+      <td>{{data.iId}}</td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td>Status</td>
+      <td>{{data.stat}}</td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td>Error type</td>
+      <td>{{data.type}}</td>
+    </tr>
+    <tr>
+      <th scope="row">4</th>
+      <th>Employee ID</th>
+      <td>{{data.empId}}</td>
+      
+    </tr>
+    <tr>
+      <th scope="row">5</th>
+      <th>Date</th>
+      <td>{{data.time}}</td>  
+    </tr>
+   
+  </tbody>
+</table>
+-->

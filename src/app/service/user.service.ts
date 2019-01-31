@@ -30,7 +30,7 @@ export class UserService {
   }
 */
   login(authCredentials) {
-    return this.http.post('http://localhost:4000/login/authenticate', authCredentials,this.noAuthHeader);
+    return this.http.post('http://68.183.84.177:4000/login/authenticate', authCredentials,this.noAuthHeader);
   }
 /*
   getUserProfile() {
@@ -45,7 +45,6 @@ export class UserService {
   }
 
   getToken() {
-    console.log(localStorage.getItem('user'));
     return localStorage.getItem('token');
 
   }
@@ -60,6 +59,8 @@ export class UserService {
     }
 
   }
+
+  
 
   storeUserData(token, user ,eType) {
     localStorage.setItem('token', token);

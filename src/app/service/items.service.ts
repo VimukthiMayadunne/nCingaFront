@@ -1,17 +1,20 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { getMatIconNoHttpProviderError } from '@angular/material';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ItemsService {
-  uri = 'http://localhost:4000/item';
+  uri = 'http://68.183.84.177:4000/item';
 
   constructor(private http: HttpClient) { }
 
   getI() {
     return this.http.get(`${this.uri}/get`);
   }
+
+
 
   getIById(id) {
     return this.http.get(`${this.uri}/get/${id}`);
@@ -39,4 +42,7 @@ export class ItemsService {
   deleteI(id) {
     return this.http.get(`${this.uri}/delete/${id}`);
   }
+  
 }
+
+

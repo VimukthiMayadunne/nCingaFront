@@ -42,7 +42,7 @@ export class BeginComponent implements OnInit {
 
   
   autoProduct(id) {
-    this.router.navigate([`/manual/${id}`]);
+    this.router.navigate([`/auto`]);
   }
   getstat(){
     this.issueService.getstat().subscribe(res =>{

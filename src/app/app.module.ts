@@ -46,9 +46,11 @@ import { StopComponent } from './components/sPro/stop/stop.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { LoginComponent } from './login/login.component';
 import { NewNawComponent } from './new-naw/new-naw.component';
+import { FeedbackComponent } from './components/feedback/feedback.component';
 
 const routes: Routes = [
-  { path: 'auto/:id', component: AutoComponent,canActivate:[AuthGuard]  },
+  { path: 'feedback', component: FeedbackComponent,canActivate:[AuthGuard]  },
+  { path: 'auto', component: AutoComponent,canActivate:[AuthGuard]  },
   { path: 'manual/:id', component: ManualComponent,canActivate:[AuthGuard]   },
   { path: 'stop', component: StopComponent,canActivate:[AuthGuard]   },
 
@@ -103,7 +105,8 @@ const routes: Routes = [
     StopComponent,
     NavbarComponent,
     LoginComponent,
-    NewNawComponent
+    NewNawComponent,
+    FeedbackComponent
   ],
   imports: [
     BrowserModule,

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { MatTableDataSource } from '@angular/material';
+import { MatSnackBar } from '@angular/material';
+
 
 import { Issue } from '../../../models/issue.model';
 import { IssueService } from '../../../service/issue.service';
@@ -15,10 +17,11 @@ export class ListComponent implements OnInit {
   issues: Issue[];
   displayedColumns = ['oId','iId','cId', 'dueDate', 'qntity', 'stat', 'actions'];
 
-  constructor(private issueService: IssueService, private router: Router) { }
+  constructor(private issueService: IssueService, private router: Router,private mat:MatSnackBar ) { }
 
   ngOnInit() {
     this.fetchIssues();
+    this.CallMe();
   }
 
   fetchIssues() {
@@ -39,6 +42,17 @@ export class ListComponent implements OnInit {
   deleteIssue(id) {
     this.issueService.deleteIssue(id).subscribe(() => {
       this.fetchIssues();
+    });
+  }
+  CallMe(){
+    while(1){
+      setTimeout(this.myFunction, 3000);
+  }
+}
+
+  myFunction(){
+    this.mat.open('Alert Trigered', 'OK', {
+      duration: 500
     });
   }
  

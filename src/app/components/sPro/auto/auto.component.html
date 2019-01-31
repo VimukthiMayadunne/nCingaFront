@@ -1,3 +1,38 @@
-<p>
-  auto works!
-</p>
+<app-navbar></app-navbar>
+<div>
+    <br>
+    <mat-card>
+      <section class="mat-typography">
+        <h3>Automatic Generation of Production plan</h3>
+      </section>
+      <mat-divider></mat-divider>
+      <br>
+      <form [formGroup]="createForm" class="create-form">
+          <mat-form-field class="field-full-width">
+              <input matInput placeholder="Item Code:" formControlName="iId" #iId>
+          </mat-form-field>
+
+          <mat-form-field >
+              <input matInput type="date" placeholder="Time Range Form:" formControlName="sDate" #sDate>
+          </mat-form-field>
+
+          <mat-form-field>
+                <input matInput type="date" placeholder="To:" formControlName="fDate" #fDate>
+          </mat-form-field>
+          
+        <mat-form-field class="field-full-width">
+          <input type="number"   matInput placeholder="No of Non Working Dates" formControlName="noDate" #noDate>
+        </mat-form-field>
+        <mat-form-field class="field-full-width">
+        <input matInput type="number"  placeholder="Average No of Emplloyes per Day for Production" formControlName="avgEmp" #avgEmp>
+        </mat-form-field>
+        <mat-form-field class="field-full-width">
+            <input matInput type="number"  placeholder="Machine Capacity Per Hour in Mashine Hours" formControlName="mHours" #mHours>
+        </mat-form-field>
+        <mat-divider></mat-divider>
+        <br><br>
+        <button mat-raised-button color="accent" routerLink="/list">Back</button>&nbsp;
+        <button type="submit" (click)="genPro(iId.value, sDate.value, fDate.value, noDate.value, avgEmp.value, mHours.value)" [disabled]="createForm.pristine || createForm.invalid" mat-raised-button color="primary">Save</button>
+      </form>
+    </mat-card>
+  </div>

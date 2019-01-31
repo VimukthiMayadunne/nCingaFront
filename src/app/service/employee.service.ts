@@ -8,7 +8,7 @@ export class EmployeeService {
 
   authToken: any;
   user: any
-  uri = 'http://localhost:4000/emp';
+  uri = 'http://68.183.84.177:4000/emp';
 
   constructor(private http: HttpClient) { }
   
